@@ -1,0 +1,225 @@
+.review-page .banner {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  background-color: var(--color-bg);
+}
+
+.review-page .banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, var(--color-bg) 100%);
+  pointer-events: none;
+}
+
+.review-page .content {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  gap: 50px;
+  padding: 0 var(--space-page-x) 60px;
+  margin-top: -200px;
+  position: relative;
+  z-index: 10;
+}
+
+.review-page .cover {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--color-cover);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 24px;
+}
+
+.platform-list { margin-top: 16px; }
+
+.platform-list h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.platform-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  padding: 6px 0;
+}
+
+.platform-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-pink); }
+
+.main-col { padding-top: 40px; }
+
+.game-title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 5px;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.game-year {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 40px;
+}
+
+.popular-reviews { margin-top: 36px; }
+
+.popular-reviews h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+
+.review-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.review-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.review-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.review-user { font-size: 14px; font-weight: 500; }
+
+.review-text {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sidebar { padding-top: 40px; }
+
+.side-panel {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.side-panel h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.rating-average { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+.rating-average .stars { font-size: 20px; }
+.rating-average .score { font-size: 15px; color: var(--text-white); font-weight: 600; }
+
+.rating-count { font-size: 12px; color: var(--text-muted); margin-bottom: 18px; }
+
+.bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.bar-row span { font-size: 11px; color: var(--text-muted); width: 12px; }
+
+.bar-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar-fill { height: 100%; background: var(--color-pink); border-radius: 3px; }
+
+@media (max-width: 1024px) {
+  .review-page .content { grid-template-columns: 240px 1fr; }
+  .sidebar {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 30px;
+    padding-top: 0;
+  }
+  .side-panel { flex: 1; }
+}
+
+@media (max-width: 768px) {
+  .review-page .content { grid-template-columns: 1fr; margin-top: -100px; gap: 30px; }
+  .review-page .cover { max-width: 220px; margin: 0 auto 20px; }
+  .main-col { padding-top: 0; text-align: center; }
+  .description { text-align: left; }
+  .sidebar { flex-direction: column; gap: 15px; }
+}
+
+#reviewFormContainer {
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+#reviewFormContainer h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-white);
+  margin-bottom: 14px;
+}
+
+#reviewFormContainer label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 6px;
+}
+
+#reviewFormContainer .field,
+#reviewFormContainer select,
+#reviewFormContainer textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-family: var(--font-base);
+  font-size: 13.5px;
+  color: var(--text-white);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#reviewFormContainer select option {
+  background: var(--color-surface);
+  color: var(--text-white);
+}
+
+#reviewFormContainer textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+#reviewFormContainer .field:focus,
+#reviewFormContainer select:focus,
+#reviewFormContainer textarea:focus {
+  border-color: var(--color-pink);
+  box-shadow: 0 0 0 2px rgba(239, 45, 99, 0.25);
+}
+
+#sendReviewBtn {
+  margin-top: 4px;
+  width: 100%;
+  padding: 12px;
+  font-weight: 600;
+}
