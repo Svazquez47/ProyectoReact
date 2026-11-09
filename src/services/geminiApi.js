@@ -1,5 +1,3 @@
-// La clave vive en el archivo .env (VITE_GEMINI_API_KEY). Si lo cambiás,
-// hay que reiniciar `npm run dev`.
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const MODEL = import.meta.env.VITE_GEMINI_MODEL || 'gemini-2.5-flash';
 const URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
@@ -12,7 +10,6 @@ const SYSTEM_PROMPT =
   'Usá títulos en MAYÚSCULAS y listas con guiones. ' +
   'Si no estás seguro de un dato, decilo; no inventes información.';
 
-// Traduce el código de estado HTTP a un mensaje entendible
 function describeStatus(status) {
   if (status === 400) return 'Gemini rechazó el pedido (error 400). Revisá la clave y el modelo del .env.';
   if (status === 403) return 'Gemini rechazó la clave (error 403). Revisá VITE_GEMINI_API_KEY.';
@@ -21,7 +18,6 @@ function describeStatus(status) {
   return `Gemini respondió con el error ${status}.`;
 }
 
-// messages: [{ role: 'user' | 'model', text: '...' }]
 async function askGemini(messages) {
   if (!isGeminiConfigured) {
     throw new Error('Falta la clave de Gemini: agregá VITE_GEMINI_API_KEY en el .env.');
@@ -54,7 +50,6 @@ async function askGemini(messages) {
   return text;
 }
 
-// Crea el texto de una guía nueva
 export function generateGuide(gameName, focus) {
   const topic = focus.trim() || 'guía general para empezar a jugar';
   return askGemini([
@@ -67,14 +62,11 @@ export function generateGuide(gameName, focus) {
   ]);
 }
 
-// Responde una pregunta de seguimiento usando toda la conversación anterior
 export function askAboutGuide(gameName, messages) {
   const [guide, ...rest] = messages;
   const context = {
     role: 'user',
     text: `Esta es mi guía de "${gameName}". Usala como contexto para mis próximas preguntas:\n\n${guide.text}`,
   };
-  // Gemini pide que la conversación alterne user/model: el contexto va como primer "user"
-  // y la guía (que es del "model") se reemplaza por una confirmación corta.
   return askGemini([context, { role: 'model', text: 'Entendido, preguntame lo que quieras.' }, ...rest]);
 }

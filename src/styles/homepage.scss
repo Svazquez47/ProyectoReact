@@ -1,10 +1,7 @@
-// ==========================================================
-// homepage.scss — portada y carruseles de juegos
-// ==========================================================
 @use 'variables';
 @use 'mixins';
 
-// ---------- Portada (hero) ----------
+
 .hero-backdrop.hero-photo {
   --hero-image: url('../assets/Ps_games_image.jpeg');
   --noise-opacity: 0.6;
@@ -76,7 +73,6 @@ section.hero.noise {
   margin-top: 18px;
 }
 
-// ---------- Secciones por categoría ----------
 .game-category {
   margin: 0;
   padding: 60px var(--space-page-x);
@@ -112,7 +108,6 @@ section.hero.noise {
   }
 }
 
-// ---------- Carrusel horizontal de tarjetas ----------
 .card-grid {
   display: flex;
   gap: 20px;
@@ -159,7 +154,6 @@ section.hero.noise {
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
     }
 
-    // Barra rosa semitransparente que sube al pasar el mouse (igual a la de My Vault)
     .add-bar {
       @include mixins.flex-center;
       position: absolute;
@@ -194,7 +188,6 @@ section.hero.noise {
       transform: translateY(0);
     }
 
-    // El título y el rating suben para dejar lugar a la barra
     .game-info {
       transition: transform 0.2s ease;
     }
@@ -203,7 +196,6 @@ section.hero.noise {
       transform: translateY(-44px);
     }
 
-    // En pantallas táctiles no existe "hover": la barra queda siempre visible
     @media (hover: none) {
       .add-bar {
         opacity: 1;
@@ -217,7 +209,6 @@ section.hero.noise {
   }
 }
 
-// ---------- Fondo de cada categoría (usa el mixin category-bg) ----------
 .bg-trending {
   @include mixins.category-bg(rgba(43, 18, 69, 0.85), url('../assets/fondo-morado-abstracto_698452-2012.avif'));
 }

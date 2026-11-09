@@ -10,8 +10,6 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const { session, signOut } = useAuth();
-
-  // La Home ya tiene el buscador grande en el cuerpo; en las demás páginas va en la barra superior
   const showCompactSearch = location.pathname !== '/';
 
   useEffect(() => {

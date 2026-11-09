@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { askAboutGuide } from '../services/geminiApi';
 import { updateGuideMessages } from '../services/guidesApi';
 
-// Muestra una guía guardada y permite seguir preguntándole cosas a la IA en forma de chat.
-// guide.messages[0] es el texto de la guía; el resto es la conversación.
 function GuideDetail({ guide, onBack, onDelete }) {
   const [messages, setMessages] = useState(guide.messages);
   const [question, setQuestion] = useState('');
@@ -27,7 +25,6 @@ function GuideDetail({ guide, onBack, onDelete }) {
       const answer = await askAboutGuide(guide.game_name, withQuestion);
       const withAnswer = [...withQuestion, { role: 'model', text: answer }];
       setMessages(withAnswer);
-      // Guardamos la conversación para que siga ahí la próxima vez
       await updateGuideMessages(guide.id, withAnswer);
     } catch (err) {
       console.error(err);

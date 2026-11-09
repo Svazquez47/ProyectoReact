@@ -13,7 +13,6 @@ function Vault() {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  // Pestaña activa: 'games' (juegos) o 'guides' (guías). Con /vault?tab=guides arranca en guías.
   const [searchParams] = useSearchParams();
   const [tab, setTab] = useState(searchParams.get('tab') === 'guides' ? 'guides' : 'games');
 
@@ -48,7 +47,6 @@ function Vault() {
   }, [user]);
 
   const handleRemoveGame = async (e, game) => {
-    // Evita que al hacer clic en eliminar se navegue a la página de review
     e.stopPropagation();
 
     const confirmed = window.confirm(

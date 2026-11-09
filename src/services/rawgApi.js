@@ -1,5 +1,4 @@
 import { MOCK_BY_CATEGORY, getMockGameById, isMockId, searchMockGames } from '../data/gamesMock';
-
 const API_KEY = import.meta.env.VITE_RAWG_API_KEY;
 export const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
 const BASE_URL = 'https://api.rawg.io/api/games';
@@ -84,7 +83,6 @@ export async function searchGames(query) {
     );
     return data.results || [];
   } catch (err) {
-    // Si RAWG no responde, buscamos entre los juegos de mock
     console.warn('RAWG no responde, buscando en datos MOCK:', err);
     return searchMockGames(query);
   }

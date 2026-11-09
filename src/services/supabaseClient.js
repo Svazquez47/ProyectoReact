@@ -1,12 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
-
-// 1. Configuración (antes en config.js)
 export const SUPABASE_URL = 'https://cqzfxlbcewobzrrhqgfy.supabase.co';
 export const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNxemZ4bGJjZXdvYnpycmhxZ2Z5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1ODkxODcsImV4cCI6MjEwNjE2NTE4N30.AsyDtvWY_UhyXZdgW_3ceRwEwZuw9xfyJmceXiLq2ns';
-
 export const REMEMBER_KEY = 'gv:remember';
-
-// Verificamos si las credenciales están configuradas
 export const isSupabaseConfigured = Boolean(
   SUPABASE_URL &&
   SUPABASE_ANON_KEY &&
@@ -14,12 +9,10 @@ export const isSupabaseConfigured = Boolean(
   SUPABASE_ANON_KEY !== 'TU_CLAVE_PUBLICA'
 );
 
-// Función para saber si el usuario eligió "Recordarme"
 function remembered() {
   return localStorage.getItem(REMEMBER_KEY) !== 'false';
 }
 
-// Tu sistema personalizado de almacenamiento dual (localStorage / sessionStorage)
 const customStorage = {
   getItem(key) {
     return sessionStorage.getItem(key) ?? localStorage.getItem(key);
@@ -37,7 +30,6 @@ const customStorage = {
   },
 };
 
-// 2. Creamos y exportamos el cliente de Supabase para usarlo en cualquier componente
 const cleanUrl = SUPABASE_URL.trim().replace(/\/+$/, '');
 
 export const supabase = isSupabaseConfigured

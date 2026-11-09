@@ -9,13 +9,10 @@ function SearchBox({ compact = false }) {
   const [error, setError] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const boxRef = useRef(null);
-
-  // 1. Manejamos los cambios de estado síncronos en el evento de escritura
   const handleInputChange = (e) => {
     const val = e.target.value;
     setQuery(val);
 
-    // Si hay menos de 3 letras, apagamos el buscador desde aquí (fuera del useEffect)
     if (val.trim().length < 3) {
       setIsOpen(false);
       setResults([]);
@@ -24,7 +21,6 @@ function SearchBox({ compact = false }) {
     }
   };
 
-  // 2. El useEffect ahora es completamente asíncrono y no genera renders en cascada
   useEffect(() => {
     const trimmed = query.trim();
 
@@ -50,7 +46,6 @@ function SearchBox({ compact = false }) {
     return () => clearTimeout(timeoutId);
   }, [query]);
 
-  // Cerrar si se hace clic afuera
   useEffect(() => {
     function handleClickOutside(e) {
       if (boxRef.current && !boxRef.current.contains(e.target)) {

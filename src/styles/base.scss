@@ -1,13 +1,7 @@
-// ==========================================================
-// base.scss — estilos globales (reset, topbar, buscador,
-// botones, formularios y footer)
-// ==========================================================
 @use 'variables';
 @use 'mixins';
 
-// Variables CSS que se conservan a propósito:
-// - --text-muted y --color-star se usan en estilos inline de los .jsx
-// - --space-page-x cambia según el ancho de la pantalla
+
 :root {
   --text-muted: #{variables.$text-muted};
   --color-star: #{variables.$color-star};
@@ -18,7 +12,6 @@
   }
 }
 
-// ---------- Reset y base ----------
 * {
   box-sizing: border-box;
   margin: 0;
@@ -45,7 +38,6 @@ a {
   margin: 0 auto;
 }
 
-// ---------- Textura de ruido ----------
 .noise,
 .noise-fixed {
   position: relative;
@@ -67,7 +59,6 @@ a {
   position: fixed;
 }
 
-// ---------- Fondo degradé con patrón ----------
 .hero-backdrop {
   --hero-image: #{variables.$hero-pattern};
   position: relative;
@@ -81,7 +72,6 @@ a {
   background-position: center;
 }
 
-// ---------- Barra superior ----------
 header.topbar {
   display: flex;
   align-items: center;
@@ -205,7 +195,6 @@ button.nav-avatar {
   }
 }
 
-// ---------- Buscador ----------
 .search-box {
   position: relative;
   display: flex;
@@ -235,7 +224,7 @@ button.nav-avatar {
     opacity: 0.6;
   }
 
-  // Versión chica para la barra superior (debe ir después de lo anterior)
+
   &--compact {
     padding: 8px 12px;
     min-width: 180px;

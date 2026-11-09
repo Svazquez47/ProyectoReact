@@ -1,24 +1,16 @@
-// ==========================================================
-// _mixins.scss — bloques de estilo reutilizables
-// Se usa con:  @use 'mixins';   y   @include mixins.flex-center;
-// ==========================================================
 @use 'variables';
-
-// Centra el contenido en ambos ejes con flexbox
 @mixin flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-// Tarjeta con el fondo "surface" (reseñas, paneles, perfil, about...)
 @mixin surface($padding, $radius: variables.$radius-md) {
   background: variables.$color-surface;
   border-radius: $radius;
   padding: $padding;
 }
 
-// Botón con borde y fondo transparente (btn-ghost y btn-secondary)
 @mixin outline-button($padding, $font-size) {
   background: transparent;
   color: variables.$text-white;
@@ -36,8 +28,6 @@
   }
 }
 
-// Fondo de cada categoría de la Homepage: degradé con un color
-// de acento en el medio + una imagen
 @mixin category-bg($tint, $image) {
   background-image:
     linear-gradient(to bottom, rgba(23, 29, 37, 1) 0%, $tint 50%, rgba(23, 29, 37, 1) 100%),

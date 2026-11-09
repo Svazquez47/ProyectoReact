@@ -7,9 +7,6 @@ import GuideDetail from './GuideDetail';
 
 const SOURCE_LABELS = { prearmed: 'Popular', link: 'Enlace', ai: 'IA' };
 
-// Pestaña "Guías" de la Vault: solo las guías que guardó el usuario.
-// Las guías nuevas se exploran y se crean en la página /guides.
-// openId: id de una guía para abrir directamente (viene de /vault?tab=guides&open=...)
 function GuidesTab({ openId }) {
   const { user } = useAuth();
 
@@ -60,7 +57,6 @@ function GuidesTab({ openId }) {
     return <p className="guide-empty">Supabase no está configurado, así que no se pueden guardar guías.</p>;
   }
 
-  // Vista de una guía abierta (con su chat)
   if (openGuide) {
     return <GuideDetail guide={openGuide} onBack={() => setOpenGuide(null)} onDelete={handleDelete} />;
   }

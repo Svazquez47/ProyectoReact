@@ -39,7 +39,6 @@ function Guides() {
     document.title = 'Guías — GameVault';
   }, []);
 
-  // Traemos lo que ya guardó el usuario para marcar las guías como "Guardada ✓"
   useEffect(() => {
     if (!user || !supabase) return;
 
@@ -58,7 +57,6 @@ function Guides() {
 
   const isSaved = (title) => savedGuides.some((g) => g.title === title);
 
-  // Guardar requiere sesión iniciada (igual que reseñar o agregar a la Vault)
   const saveGuide = async (guide) => {
     if (!user) {
       window.alert('Debes iniciar sesión para guardar guías.');
@@ -116,7 +114,6 @@ function Guides() {
         source: 'ai',
         messages: [{ role: 'model', text }],
       });
-      // La guía queda en la Vault: la abrimos ahí para poder seguir con el chat
       if (saved) navigate(`/vault?tab=guides&open=${saved.id}`);
     } catch (err) {
       console.error(err);
@@ -126,7 +123,6 @@ function Guides() {
     }
   };
 
-  // ---------- Vista de lectura de una guía popular ----------
   if (reading) {
     return (
       <div className="guides-page">

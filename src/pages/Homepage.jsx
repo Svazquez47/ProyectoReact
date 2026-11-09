@@ -7,9 +7,7 @@ import { MOCK_BY_CATEGORY } from '../data/gamesMock';
 import SearchBox from '../components/SearchBox';
 import '../styles/homepage.scss';
 
-// Subcomponente reutilizable para cada fila de categoría
 function CategoryRow({ title, bgClass, endpointParams, mockKey, vaultIds, onAddToVault }) {
-  // Si se fuerza el modo mock, arrancamos directamente con las tarjetas de esta categoría
   const [games, setGames] = useState(USE_MOCK ? MOCK_BY_CATEGORY[mockKey] : []);
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -33,7 +31,6 @@ function CategoryRow({ title, bgClass, endpointParams, mockKey, vaultIds, onAddT
       .catch((err) => {
         console.warn(`Error cargando la categoría "${title}". Usando datos MOCK de respaldo:`, err);
         if (isMounted) {
-          // Si falla la API de RAWG, cargamos el MOCK para que la interfaz muestre las tarjetas
           setGames(MOCK_BY_CATEGORY[mockKey]);
         }
       });
@@ -104,7 +101,6 @@ function CategoryRow({ title, bgClass, endpointParams, mockKey, vaultIds, onAddT
                   className="add-bar"
                   disabled={vaultIds.includes(game.id)}
                   onClick={(e) => {
-                    // Evita que el clic abra la página de review
                     e.stopPropagation();
                     onAddToVault(game);
                   }}
@@ -123,7 +119,6 @@ function CategoryRow({ title, bgClass, endpointParams, mockKey, vaultIds, onAddT
 function Homepage() {
   const { session, user } = useAuth();
   const navigate = useNavigate();
-  // Ids de los juegos que el usuario ya tiene en su Vault (para marcar el botón)
   const [vaultIds, setVaultIds] = useState([]);
 
   useEffect(() => {
@@ -161,7 +156,6 @@ function Homepage() {
       },
     ]);
 
-    // 23505 = el juego ya estaba en la Vault
     if (error && error.code !== '23505') {
       console.error('Error:', error);
       window.alert('Error al guardar el juego.');

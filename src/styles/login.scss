@@ -1,11 +1,7 @@
-// ==========================================================
-// login.scss — pantalla de Login / registro / recuperar clave
-// (.field, .btn-primary y .btn-secondary están en base.scss)
-// ==========================================================
 @use 'variables';
 @use 'mixins';
 
-// Usamos .login-page en lugar de body para no afectar al resto de la SPA
+
 .login-page {
   @include mixins.flex-center;
   min-height: 100vh;
@@ -124,7 +120,6 @@
   }
 }
 
-// ---------- Mensajes del formulario ----------
 .form-message {
   font-size: 12px;
   line-height: 1.5;

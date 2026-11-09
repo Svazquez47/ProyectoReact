@@ -1,8 +1,4 @@
 import { supabase } from './supabaseClient';
-
-// Cada guía guardada es una fila de la tabla vault_guides (ver supabase/vault_guides.sql).
-// messages[0] es el texto de la guía; el resto son las preguntas y respuestas del chat.
-
 export async function fetchGuides(userId) {
   const { data, error } = await supabase
     .from('vault_guides')
