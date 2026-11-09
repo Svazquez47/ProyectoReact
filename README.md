@@ -1,5 +1,7 @@
 # Proyecto Integrador: Catálogo de Videojuegos
 
+**Integrantes:** Santino Vazquez de Novoa, Tomás Vogt
+
 ## Descripción
 GameVault es una aplicación web para llevar el seguimiento de los videojuegos que se juegan, similar a Letterboxd pero orientada a videojuegos. Tiene un catálogo organizado por categorías, permite guardar juegos en una colección personal llamada Vault, calificarlos y escribir reseñas que ven todos los usuarios, y consultar guías de juegos (prearmadas, enlaces a otras paginas de la comunidad, wikis, etc o crearlas con inteligencia artificial). El proyecto se desarrolló para la materia Taller de Desarrollo Web. Originalmente estaba escrito en HTML, CSS y JavaScript; esta versión es la versión hecha con React, Vite y Sass.
 
@@ -67,9 +69,6 @@ Para poder hacer mas facil el cambio entre la api y los datos nuestros, se imple
 *   El sistema lee la variable `VITE_USE_MOCK`.
 *   Si el valor es `true`, en lugar de hacer un `fetch` a internet, la función devuelve una Promesa que resuelve un archivo `.json` local de forma inmediata.
 *   Si es `false`, la aplicación ejecuta la petición real.
-
-## 5. Preprocesamiento de Estilos
-La interfaz utiliza Sass (SCSS) en lugar de CSS estándar. Esto permite el uso de variables para definir esquemas de colores de forma centralizada y anidamiento de selectores, lo que asocia visualmente el bloque de estilos con la estructura del HTML devuelto por el componente.
 
 ---
 
