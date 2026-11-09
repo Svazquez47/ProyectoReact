@@ -8,6 +8,7 @@ import Vault from './pages/Vault';
 import Profile from './pages/Profile';
 import Review from './pages/Review';
 import About from './pages/About';
+import Guides from './pages/Guides';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
               }
             />
             <Route path="review" element={<Review />} />
+            <Route path="guides" element={<Guides />} />
             <Route path="about" element={<About />} />
           </Route>
 

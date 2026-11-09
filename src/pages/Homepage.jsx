@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { supabase } from '../services/supabaseClient';
 import { fetchGamesByCategory, getRecentDatesRange, USE_MOCK } from '../services/rawgApi';
 import { MOCK_BY_CATEGORY } from '../data/gamesMock';
 import SearchBox from '../components/SearchBox';
 import '../styles/homepage.scss';
 
-function CategoryRow({ title, bgClass, endpointParams, mockKey }) {
+// Subcomponente reutilizable para cada fila de categoría
+function CategoryRow({ title, bgClass, endpointParams, mockKey, vaultIds, onAddToVault }) {
+  // Si se fuerza el modo mock, arrancamos directamente con las tarjetas de esta categoría
   const [games, setGames] = useState(USE_MOCK ? MOCK_BY_CATEGORY[mockKey] : []);
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -22,6 +25,7 @@ function CategoryRow({ title, bgClass, endpointParams, mockKey }) {
           if (results && results.length > 0) {
             setGames(results);
           } else {
+            // Si la API devuelve un array vacío, usar MOCK
             setGames(MOCK_BY_CATEGORY[mockKey]);
           }
         }
@@ -29,6 +33,7 @@ function CategoryRow({ title, bgClass, endpointParams, mockKey }) {
       .catch((err) => {
         console.warn(`Error cargando la categoría "${title}". Usando datos MOCK de respaldo:`, err);
         if (isMounted) {
+          // Si falla la API de RAWG, cargamos el MOCK para que la interfaz muestre las tarjetas
           setGames(MOCK_BY_CATEGORY[mockKey]);
         }
       });
@@ -67,6 +72,7 @@ function CategoryRow({ title, bgClass, endpointParams, mockKey }) {
                 onClick={() => navigate(`/review?id=${game.id}`)}
               >
                 <div
+                  className="game-info"
                   style={{
                     background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)',
                     height: '100%',
@@ -91,6 +97,20 @@ function CategoryRow({ title, bgClass, endpointParams, mockKey }) {
                     <span style={{ color: 'var(--text-muted)', marginLeft: '8px' }}>{year}</span>
                   </p>
                 </div>
+
+                {/* Barra que aparece al pasar el mouse por la tarjeta */}
+                <button
+                  type="button"
+                  className="add-bar"
+                  disabled={vaultIds.includes(game.id)}
+                  onClick={(e) => {
+                    // Evita que el clic abra la página de review
+                    e.stopPropagation();
+                    onAddToVault(game);
+                  }}
+                >
+                  {vaultIds.includes(game.id) ? '✓ In Vault' : '+ Add to Vault'}
+                </button>
               </div>
             );
           })
@@ -101,7 +121,54 @@ function CategoryRow({ title, bgClass, endpointParams, mockKey }) {
 }
 
 function Homepage() {
-  const { session } = useAuth();
+  const { session, user } = useAuth();
+  const navigate = useNavigate();
+  // Ids de los juegos que el usuario ya tiene en su Vault (para marcar el botón)
+  const [vaultIds, setVaultIds] = useState([]);
+
+  useEffect(() => {
+    if (!user || !supabase) return;
+
+    let isMounted = true;
+
+    supabase
+      .from('vault_games')
+      .select('game_id')
+      .eq('user_id', user.id)
+      .then(({ data }) => {
+        if (isMounted && data) setVaultIds(data.map((row) => row.game_id));
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [user]);
+
+  const handleAddToVault = async (game) => {
+    if (!user) {
+      window.alert('Debes iniciar sesión para guardar juegos.');
+      navigate('/login');
+      return;
+    }
+    if (!supabase) return;
+
+    const { error } = await supabase.from('vault_games').insert([
+      {
+        user_id: user.id,
+        game_id: game.id,
+        game_name: game.name,
+        background_image: game.background_image,
+      },
+    ]);
+
+    // 23505 = el juego ya estaba en la Vault
+    if (error && error.code !== '23505') {
+      console.error('Error:', error);
+      window.alert('Error al guardar el juego.');
+      return;
+    }
+    setVaultIds((prev) => [...prev, game.id]);
+  };
 
   const categories = [
     {
@@ -167,6 +234,8 @@ function Homepage() {
           bgClass={cat.bgClass}
           endpointParams={cat.endpointParams}
           mockKey={cat.mockKey}
+          vaultIds={vaultIds}
+          onAddToVault={handleAddToVault}
         />
       ))}
     </>

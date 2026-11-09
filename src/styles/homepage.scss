@@ -158,6 +158,62 @@ section.hero.noise {
       transform: translateY(-8px);
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
     }
+
+    // Barra rosa semitransparente que sube al pasar el mouse (igual a la de My Vault)
+    .add-bar {
+      @include mixins.flex-center;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 44px;
+      border: none;
+      background-color: rgba(239, 45, 99, 0.85);
+      color: variables.$text-white;
+      font-family: variables.$font-base;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.15s ease;
+      z-index: 2;
+
+      &:hover:not(:disabled) {
+        background-color: rgba(255, 63, 116, 0.95);
+      }
+
+      &:disabled {
+        background-color: rgba(74, 31, 125, 0.85);
+        cursor: default;
+      }
+    }
+
+    &:hover .add-bar {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    // El título y el rating suben para dejar lugar a la barra
+    .game-info {
+      transition: transform 0.2s ease;
+    }
+
+    &:hover .game-info {
+      transform: translateY(-44px);
+    }
+
+    // En pantallas táctiles no existe "hover": la barra queda siempre visible
+    @media (hover: none) {
+      .add-bar {
+        opacity: 1;
+        transform: none;
+      }
+
+      .game-info {
+        transform: translateY(-44px);
+      }
+    }
   }
 }
 

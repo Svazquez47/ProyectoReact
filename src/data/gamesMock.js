@@ -17,7 +17,9 @@ export function isMockId(id) {
 
 // Portada generada con SVG (no necesita internet ni archivos de imagen).
 // Cada juego usa un color distinto según su id.
-function makeCover(id, name) {
+export function makeCover(id, name, wide = false) {
+  // wide = true genera una portada horizontal (para las tarjetas de guías)
+  const [width, height] = wide ? [460, 215] : [220, 320];
   const hue = (id * 47) % 360;
   // Solo las iniciales: el nombre completo ya lo muestra la tarjeta
   const initials = name
@@ -28,15 +30,15 @@ function makeCover(id, name) {
     .map((w) => w[0])
     .join('')
     .toUpperCase();
-  const text = `<text x="110" y="140" text-anchor="middle" font-size="64" opacity="0.35">${initials}</text>`;
+  const text = `<text x="${width / 2}" y="${wide ? 130 : 140}" text-anchor="middle" font-size="${wide ? 72 : 64}" opacity="0.35">${initials}</text>`;
 
   const svg =
-    `<svg xmlns="http://www.w3.org/2000/svg" width="220" height="320" viewBox="0 0 220 320">` +
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">` +
     `<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">` +
     `<stop offset="0" stop-color="hsl(${hue},70%,45%)"/>` +
     `<stop offset="1" stop-color="hsl(${(hue + 50) % 360},65%,18%)"/>` +
     `</linearGradient></defs>` +
-    `<rect width="220" height="320" fill="url(#g)"/>` +
+    `<rect width="${width}" height="${height}" fill="url(#g)"/>` +
     `<g fill="#fff" font-family="Poppins, Arial, sans-serif" font-size="22" font-weight="700">${text}</g>` +
     `</svg>`;
 

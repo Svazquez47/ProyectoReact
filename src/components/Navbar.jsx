@@ -11,8 +11,8 @@ function Navbar() {
   const location = useLocation();
   const { session, signOut } = useAuth();
 
-  // Mostramos el buscador compacto en la barra superior cuando no estamos en Home ('/') ni en '/about'
-  const showCompactSearch = location.pathname !== '/' && location.pathname !== '/about';
+  // La Home ya tiene el buscador grande en el cuerpo; en las demás páginas va en la barra superior
+  const showCompactSearch = location.pathname !== '/';
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -58,6 +58,7 @@ function Navbar() {
       <div className="topbar-right">
         <nav className="links">
           <Link to="/">Home</Link>
+          <Link to="/guides">Guides</Link>
           <Link to="/vault">My Vault</Link>
           <Link to="/about">About</Link>
         </nav>

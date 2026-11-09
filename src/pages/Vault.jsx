@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '../services/supabaseClient';
 import { useAuth } from '../context/AuthContext';
 import GuidesTab from '../components/GuidesTab';
@@ -13,8 +13,9 @@ function Vault() {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  // Pestaña activa: 'games' (juegos) o 'guides' (guías)
-  const [tab, setTab] = useState('games');
+  // Pestaña activa: 'games' (juegos) o 'guides' (guías). Con /vault?tab=guides arranca en guías.
+  const [searchParams] = useSearchParams();
+  const [tab, setTab] = useState(searchParams.get('tab') === 'guides' ? 'guides' : 'games');
 
   useEffect(() => {
     if (!user || !supabase) return;
@@ -99,7 +100,7 @@ function Vault() {
           </button>
         </div>
 
-        {tab === 'guides' && <GuidesTab />}
+        {tab === 'guides' && <GuidesTab openId={searchParams.get('open')} />}
 
         {tab === 'games' && (
         <div className="vault-grid" id="vaultGrid">
