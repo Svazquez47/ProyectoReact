@@ -1,0 +1,109 @@
+{
+  "prearmed": [
+    {
+      "id": "elden-ring",
+      "game": "Elden Ring",
+      "title": "Guía para tus primeras horas",
+      "summary": "Primeros pasos en las Tierras Intermedias",
+      "text": "CLASE INICIAL\n- Vagabond y Samurai son clases fuertes para empezar; Astrologer si preferís magia.\n\nPRIMERAS HORAS\n- Explorá Limgrave antes de ir a Castillo Tormenta: ganás niveles y equipo.\n- Conseguí a Torrent (tu caballo) en el Sitio de la Gracia inicial.\n- Descansá en los Sitios de Gracia para recuperar frascos; los enemigos reaparecen.\n- Gastá las runas apenas puedas: si morís, las perdés.\n\nCONSEJOS\n- Subí Vigor (vida) hasta unos 20-30 antes de especializarte.\n- Usá cenizas de espíritu y convocá aliados en los jefes difíciles (por ejemplo Margit).\n- Si algo es demasiado difícil, andate a otra zona y volvé más fuerte.\n- Mirá el mapa: los fragmentos de mapa muestran dónde hay tesoros.\n\nERRORES COMUNES\n- Pelear de frente con todo. Rodar (esquivar) es mejor que bloquear al principio.\n- Ignorar el equipo: mejorá tu arma principal con piedras de forja."
+    },
+    {
+      "id": "baldurs-gate-3",
+      "game": "Baldur's Gate 3",
+      "title": "Guía de supervivencia del Acto 1",
+      "summary": "Cómo empezar sin arrepentirte",
+      "text": "ANTES DE EMPEZAR\n- Elegí con calma tu raza y clase; hay personajes personalizados y con historia (Origins).\n\nACTO 1\n- Hablá con todos y revisá cada rincón: muchas misiones se resuelven sin pelear.\n- Guardá seguido y antes de decisiones importantes (F5 es guardado rápido).\n- Los descansos cortos recuperan poco; los largos reponen todo pero gastan suministros.\n\nCOMBATE\n- Atacá desde terreno alto: da ventaja.\n- Empujar enemigos (Shove) puede ganar peleas enteras.\n- Preparar conjuros y habilidades según el grupo de cuatro.\n\nERRORES COMUNES\n- Ir a cualquier lugar sin explorar: el Campamento Goblin es difícil de entrada.\n- Cargar con todo: vendé o dejá objetos para no pasarte del peso."
+    },
+    {
+      "id": "the-witcher-3",
+      "game": "The Witcher 3: Wild Hunt",
+      "title": "Guía para novatos",
+      "summary": "Primeras horas con Geralt",
+      "text": "CONSEJOS INICIALES\n- Prestá atención al nivel recomendado de cada misión.\n- Usá Signos (en especial Quen) y aceites para espadas según el monstruo.\n- Meditar repone pociones, pero necesitás alcohol en el inventario.\n\nEXPLORACIÓN\n- Los Sentidos de Brujo te muestran huellas y objetos interactivos.\n- En Velen hay misiones importantes (por ejemplo el Barón Sangriento).\n- Los carteles de contrato dan dinero y experiencia.\n\nEXTRAS\n- Gwent es opcional pero entretenido; armá tu mazo de a poco.\n\nERRORES COMUNES\n- Vender todo el equipo bueno: revisá antes de vender.\n- Ignorar las decisiones: afectan los finales."
+    },
+    {
+      "id": "zelda-tears-of-the-kingdom",
+      "game": "The Legend of Zelda: Tears of the Kingdom",
+      "title": "Guía de habilidades y primeros pasos",
+      "summary": "Dominá Ultramano y Fusión",
+      "text": "HABILIDADES PRINCIPALES\n- Ultramano: levantar y pegar objetos para construir vehículos y herramientas.\n- Fusión: combinar materiales con armas y escudos para mejorarlos.\n- Ascenso: atravesar techos desde abajo.\n- Retroceso: volver un objeto atrás en el tiempo.\n\nPRIMERAS HORAS\n- Completá la Isla del Cielo Inicial: es el tutorial.\n- Explorá con calma: casi todo se puede resolver de más de una forma.\n\nCONSEJOS\n- Fusioná materiales fuertes con tus armas antes de cada combate.\n- Probá diseños simples primero antes de armar vehículos grandes.\n- Revisá el mapa seguido para marcar lugares interesantes."
+    },
+    {
+      "id": "minecraft",
+      "game": "Minecraft",
+      "title": "Tu primera noche",
+      "summary": "Cómo sobrevivir al primer día",
+      "text": "PRIMEROS PASOS\n- Golpeá árboles para conseguir madera.\n- Hacé una mesa de crafteo y un pico de madera.\n- Con piedra fabricá pico, hacha, pala y espada.\n\nANTES DE QUE ANOCHEZCA\n- Conseguí comida (animales, pan o manzanas).\n- Construí un refugio simple o cavá una cueva y tapá la entrada.\n- Con carbón y palos fabricá antorchas para iluminar.\n\nSI DORMÍS\n- Una cama necesita 3 lanas y 3 tablones; dormir salta la noche.\n\nERRORES COMUNES\n- Salir de noche sin armadura ni armas.\n- Cavar directo hacia abajo: podés caer en lava o en cuevas."
+    },
+    {
+      "id": "stardew-valley",
+      "game": "Stardew Valley",
+      "title": "Guía de tu primer año",
+      "summary": "Granja, vecinos y rutina",
+      "text": "PRIMERA SEMANA\n- Plantá chirivías (parsnips) apenas llegues; crecen rápido.\n- Regá todos los días: no podés plantar de más si no tenés energía.\n- Hablá todos los días con los vecinos del pueblo.\n\nRUTINA\n- Pescá, minería y recolección ayudan cuando los cultivos aún no dan ingresos.\n- Guardá dinero para mejorar el hacha y la regadera.\n- Completá los paquetes del Centro Comunitario de a poco.\n\nCONSEJOS\n- Hacé regalos a los vecinos que te caigan bien: suben la amistad.\n- Dormir a tiempo evita perder energía al otro día."
+    },
+    {
+      "id": "hollow-knight",
+      "game": "Hollow Knight",
+      "title": "Guía de Hallownest para empezar",
+      "summary": "Primeras zonas y consejos",
+      "text": "PRIMEROS PASOS\n- Empezá en Dirtmouth y bajá hasta el Cruce Olvidado.\n- Comprá el mapa a Cornifer: es un juego de exploración y te vas a perder sin él.\n- Descansá en los bancos para guardar y recuperar vida.\n\nSI MORÍS\n- Dejás una sombra con tu dinero (Geo): derrotala para recuperarlo.\n\nMEJORAS\n- Equipá amuletos según tu estilo; tenés un límite de espacios.\n- Curarte consume Alma: no la gastes toda en ataques.\n\nERRORES COMUNES\n- Insistir contra un jefe sin explorar antes: hay zonas más fáciles y mejoras en el camino."
+    }
+  ],
+  "links": [
+    {
+      "game": "Elden Ring",
+      "title": "Wiki de Elden Ring",
+      "site": "Fextralife",
+      "url": "https://eldenring.wiki.fextralife.com/Elden+Ring+Wiki"
+    },
+    {
+      "game": "Baldur's Gate 3",
+      "title": "Baldur's Gate 3 Wiki",
+      "site": "bg3.wiki",
+      "url": "https://bg3.wiki/"
+    },
+    {
+      "game": "The Witcher 3",
+      "title": "The Witcher 3: Wild Hunt",
+      "site": "Witcher Wiki",
+      "url": "https://witcher.fandom.com/wiki/The_Witcher_3:_Wild_Hunt"
+    },
+    {
+      "game": "Zelda: Tears of the Kingdom",
+      "title": "Guías y mapas de Zelda",
+      "site": "Zelda Dungeon",
+      "url": "https://www.zeldadungeon.net/"
+    },
+    {
+      "game": "Minecraft",
+      "title": "Minecraft Wiki",
+      "site": "minecraft.wiki",
+      "url": "https://minecraft.wiki/"
+    },
+    {
+      "game": "Stardew Valley",
+      "title": "Stardew Valley Wiki",
+      "site": "stardewvalleywiki.com",
+      "url": "https://stardewvalleywiki.com/"
+    },
+    {
+      "game": "Hollow Knight",
+      "title": "Hollow Knight Wiki",
+      "site": "Fandom",
+      "url": "https://hollowknight.fandom.com/wiki/Hollow_Knight_Wiki"
+    },
+    {
+      "game": "Varios juegos",
+      "title": "Wikis y guías de IGN",
+      "site": "IGN",
+      "url": "https://www.ign.com/wikis"
+    },
+    {
+      "game": "Varios juegos",
+      "title": "Guías de GameFAQs",
+      "site": "GameFAQs",
+      "url": "https://gamefaqs.gamespot.com/"
+    }
+  ]
+}

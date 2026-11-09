@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../services/supabaseClient';
 import { useAuth } from '../context/AuthContext';
+import GuidesTab from '../components/GuidesTab';
 import '../styles/vault.scss';
+import '../styles/guides.scss';
 
 function Vault() {
   const { user } = useAuth();
@@ -11,6 +13,8 @@ function Vault() {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  // Pestaña activa: 'games' (juegos) o 'guides' (guías)
+  const [tab, setTab] = useState('games');
 
   useEffect(() => {
     if (!user || !supabase) return;
@@ -43,6 +47,7 @@ function Vault() {
   }, [user]);
 
   const handleRemoveGame = async (e, game) => {
+    // Evita que al hacer clic en eliminar se navegue a la página de review
     e.stopPropagation();
 
     const confirmed = window.confirm(
@@ -57,6 +62,7 @@ function Vault() {
       .eq('game_id', game.game_id);
 
     if (!deleteError) {
+      // Actualizamos el estado quitando el juego eliminado sin recargar la página
       setGames((prevGames) => prevGames.filter((g) => g.game_id !== game.game_id));
     } else {
       console.error('Error al eliminar:', deleteError);
@@ -69,11 +75,33 @@ function Vault() {
       <main className="vault-main">
         <div className="vault-header">
           <h1 className="vault-title">My Vault</h1>
-          <Link to="/" className="btn-primary">
-            Add Game
-          </Link>
+          {tab === 'games' && (
+            <Link to="/" className="btn-primary">
+              Add Game
+            </Link>
+          )}
         </div>
 
+        <div className="vault-tabs">
+          <button
+            type="button"
+            className={`vault-tab ${tab === 'games' ? 'active' : ''}`}
+            onClick={() => setTab('games')}
+          >
+            Juegos
+          </button>
+          <button
+            type="button"
+            className={`vault-tab ${tab === 'guides' ? 'active' : ''}`}
+            onClick={() => setTab('guides')}
+          >
+            Guías
+          </button>
+        </div>
+
+        {tab === 'guides' && <GuidesTab />}
+
+        {tab === 'games' && (
         <div className="vault-grid" id="vaultGrid">
           {loading && (
             <p style={{ color: 'var(--text-muted)', gridColumn: '1 / -1' }}>
@@ -125,6 +153,7 @@ function Vault() {
               );
             })}
         </div>
+        )}
       </main>
     </div>
   );
