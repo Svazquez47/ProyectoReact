@@ -1,0 +1,402 @@
+// ==========================================================
+// base.scss — estilos globales (reset, topbar, buscador,
+// botones, formularios y footer)
+// ==========================================================
+@use 'variables';
+@use 'mixins';
+
+// Variables CSS que se conservan a propósito:
+// - --text-muted y --color-star se usan en estilos inline de los .jsx
+// - --space-page-x cambia según el ancho de la pantalla
+:root {
+  --text-muted: #{variables.$text-muted};
+  --color-star: #{variables.$color-star};
+  --space-page-x: #{variables.$space-page-x};
+
+  @media (max-width: variables.$bp-mobile) {
+    --space-page-x: #{variables.$space-page-x-mobile};
+  }
+}
+
+// ---------- Reset y base ----------
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: variables.$font-base;
+  background: variables.$color-bg;
+  color: variables.$text-white;
+}
+
+a {
+  color: inherit;
+}
+
+.page {
+  max-width: variables.$page-max-width;
+  margin: 0 auto;
+}
+
+// ---------- Textura de ruido ----------
+.noise,
+.noise-fixed {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: variables.$noise-base;
+    background-repeat: repeat;
+    mix-blend-mode: overlay;
+    opacity: var(--noise-opacity, 0.5);
+  }
+}
+
+.noise-fixed::after {
+  position: fixed;
+}
+
+// ---------- Fondo degradé con patrón ----------
+.hero-backdrop {
+  --hero-image: #{variables.$hero-pattern};
+  position: relative;
+  background-image:
+    linear-gradient(120deg, rgba(40, 15, 60, 0.55) 0%, rgba(60, 10, 40, 0.35) 45%, rgba(30, 10, 55, 0.85) 100%),
+    var(--hero-image),
+    linear-gradient(100deg, variables.$color-hero-start 0%, variables.$color-hero-mid 35%, #5a2199 70%, variables.$color-hero-end 100%);
+  background-repeat: no-repeat, repeat, no-repeat;
+  background-size: cover, 300px 300px, cover;
+  background-blend-mode: multiply, normal, normal;
+  background-position: center;
+}
+
+// ---------- Barra superior ----------
+header.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px var(--space-page-x);
+  background: linear-gradient(90deg, variables.$color-topbar-start 0%, variables.$color-topbar-mid 55%, variables.$color-topbar-end 100%);
+  position: relative;
+  z-index: 200;
+  overflow: visible;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 700;
+  font-size: 28px;
+  text-decoration: none;
+  color: variables.$text-white;
+
+  img {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+nav.links {
+  display: flex;
+  gap: 26px;
+  font-size: 13px;
+  font-weight: 500;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.9;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: variables.$bp-tablet) {
+    display: none;
+  }
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-avatar {
+  @include mixins.flex-center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 14px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+button.nav-avatar {
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.user-menu {
+  position: relative;
+  z-index: 1;
+
+  &.open .user-dropdown {
+    display: block;
+  }
+}
+
+.user-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  min-width: 160px;
+  padding: 6px;
+  background: variables.$color-surface;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: variables.$radius-md;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+
+  a {
+    display: block;
+    padding: 10px 12px;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: variables.$radius-sm;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    padding: 10px 12px;
+    font-size: 13px;
+    border-radius: variables.$radius-sm;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+}
+
+// ---------- Buscador ----------
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: variables.$radius-sm;
+  padding: 10px 14px;
+  gap: 8px;
+  min-width: 220px;
+
+  input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: variables.$font-base;
+    font-size: 14px;
+    color: #333;
+    width: 100%;
+
+    &::placeholder {
+      color: #8a8a8a;
+    }
+  }
+
+  svg {
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+
+  // Versión chica para la barra superior (debe ir después de lo anterior)
+  &--compact {
+    padding: 8px 12px;
+    min-width: 180px;
+
+    input {
+      font-size: 13px;
+    }
+  }
+}
+
+.search-results {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  background: variables.$color-surface;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: variables.$radius-sm;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+
+  &.active {
+    display: flex;
+  }
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: variables.$text-white;
+  transition: background 0.15s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  img {
+    width: 32px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 4px;
+    background: variables.$color-cover;
+  }
+}
+
+.search-result-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.search-result-title {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-result-year {
+  font-size: 11px;
+  color: variables.$text-muted;
+}
+
+.search-loading {
+  padding: 12px;
+  text-align: center;
+  font-size: 12px;
+  color: variables.$text-muted;
+}
+
+// ---------- Botones ----------
+.btn-primary {
+  display: inline-block;
+  background: variables.$color-pink;
+  color: variables.$text-white;
+  border: none;
+  border-radius: 7px;
+  padding: 11px 22px;
+  font-family: variables.$font-base;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: variables.$color-pink-hover;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-ghost {
+  @include mixins.outline-button(8px 16px, 13px);
+}
+
+.btn-secondary {
+  @include mixins.outline-button(12px, 14px);
+}
+
+// ---------- Campo de formulario (Login y Review) ----------
+.field {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.94);
+  border: none;
+  border-radius: 7px;
+  padding: 12px 14px;
+  font-family: variables.$font-base;
+  font-size: 13px;
+  color: #333;
+  outline: none;
+
+  &::placeholder {
+    color: #8f8f8f;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px variables.$color-pink;
+  }
+}
+
+// ---------- Utilidades ----------
+.is-hidden {
+  display: none !important;
+}
+
+.stars {
+  color: variables.$color-star;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+// ---------- Footer ----------
+.site-footer {
+  padding: 28px var(--space-page-x);
+  background: variables.$color-surface;
+  color: variables.$text-muted;
+  font-size: 13px;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      color: variables.$text-white;
+    }
+  }
+}

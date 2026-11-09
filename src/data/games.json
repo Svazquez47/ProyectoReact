@@ -1,0 +1,502 @@
+{
+  "trending": [
+    {
+      "slug": "elden-ring",
+      "name": "Elden Ring",
+      "released": "2022-02-25",
+      "rating": 4.8,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox"
+      ],
+      "description": "Una épica aventura de rol de acción ambientada en un mundo abierto de fantasía oscura. Destaca por su combate desafiante y su exploración sin guías intrusivas.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/library_600x900.jpg"
+    },
+    {
+      "slug": "grand-theft-auto-v",
+      "name": "Grand Theft Auto V",
+      "released": "2013-09-17",
+      "rating": 4.5,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox"
+      ],
+      "description": "Sigue la historia entrelazada de tres criminales en la inmensa ciudad de Los Santos. Ofrece total libertad en un entorno satírico que parodia la sociedad estadounidense.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/library_600x900.jpg"
+    },
+    {
+      "slug": "the-witcher-3-wild-hunt",
+      "name": "The Witcher 3: Wild Hunt",
+      "released": "2015-05-19",
+      "rating": 4.9,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox",
+        "Nintendo"
+      ],
+      "description": "El brujo Geralt de Rivia busca a su hija adoptiva en un continente devastado por la guerra. Su narrativa profunda y decisiones morales complejas lo definen como una obra maestra del rol.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/library_600x900.jpg"
+    },
+    {
+      "slug": "red-dead-redemption-2",
+      "name": "Red Dead Redemption 2",
+      "released": "2018-10-26",
+      "rating": 4.8,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox"
+      ],
+      "description": "Un viaje melancólico sobre el fin de la era de los forajidos en Estados Unidos. Protagonizado por Arthur Morgan, deslumbra con su realismo y atención al detalle.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/library_600x900.jpg"
+    },
+    {
+      "slug": "minecraft",
+      "name": "Minecraft",
+      "released": "2011-11-18",
+      "rating": 4.7,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox",
+        "Nintendo"
+      ],
+      "description": "Un sandbox infinito donde los jugadores pueden construir, sobrevivir y explorar mundos generados por bloques. Su libertad creativa lo ha convertido en un fenómeno cultural.",
+      "cover_url": null
+    },
+    {
+      "slug": "cyberpunk-2077",
+      "name": "Cyberpunk 2077",
+      "released": "2020-12-10",
+      "rating": 4.2,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox"
+      ],
+      "description": "Un RPG de acción ambientado en la distópica megalópolis de Night City. Tras un inicio turbulento, se consolidó gracias a sus múltiples actualizaciones y su inmersiva historia.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/library_600x900.jpg"
+    },
+    {
+      "slug": "hollow-knight",
+      "name": "Hollow Knight",
+      "released": "2017-02-24",
+      "rating": 4.6,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox",
+        "Nintendo"
+      ],
+      "description": "Un aclamado metroidvania que sumerge al jugador en el reino subterráneo y en ruinas de Hallownest. Combina exploración atmosférica, combate preciso y un diseño artístico dibujado a mano.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/367520/library_600x900.jpg"
+    },
+    {
+      "slug": "stardew-valley",
+      "name": "Stardew Valley",
+      "released": "2016-02-26",
+      "rating": 4.8,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox",
+        "Nintendo"
+      ],
+      "description": "Un simulador de vida y granja donde debes revitalizar los terrenos heredados de tu abuelo. Ofrece un bucle relajante de agricultura, minería y relaciones sociales.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/library_600x900.jpg"
+    }
+  ],
+  "new": [
+    {
+      "slug": "black-myth-wukong",
+      "name": "Black Myth: Wukong",
+      "released": "2024-08-20",
+      "rating": 4.5,
+      "platforms": [
+        "PC",
+        "PlayStation"
+      ],
+      "description": "Un juego de rol y acción fuertemente inspirado en la novela clásica Viaje al Oeste. Impresiona por su apartado gráfico de vanguardia y épicas batallas contra jefes de la mitología china.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/library_600x900.jpg"
+    },
+    {
+      "slug": "metaphor-refantazio",
+      "name": "Metaphor: ReFantazio",
+      "released": "2024-10-11",
+      "rating": 4.7,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox"
+      ],
+      "description": "El nuevo RPG de los creadores de Persona, ambientado en un mundo de fantasía al borde del colapso político. Su sistema de combate por turnos se combina con una gestión del tiempo y vínculos sociales.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2679460/library_600x900.jpg"
+    },
+    {
+      "slug": "silent-hill-2-remake",
+      "name": "Silent Hill 2",
+      "released": "2024-10-08",
+      "rating": 4.6,
+      "platforms": [
+        "PC",
+        "PlayStation"
+      ],
+      "description": "Una reconstrucción visual y jugable del clásico de terror psicológico de Konami. James Sunderland regresa al pueblo brumoso en una experiencia inmersiva y aterradora.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2124490/library_600x900.jpg"
+    },
+    {
+      "slug": "dragon-ball-sparking-zero",
+      "name": "Dragon Ball: Sparking! Zero",
+      "released": "2024-10-11",
+      "rating": 4.4,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox"
+      ],
+      "description": "El regreso de la legendaria saga Budokai Tenkaichi con gráficos modernos y un plantel inmenso. Sus combates en arenas 3D capturan a la perfección la frenética acción del anime.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1790600/library_600x900.jpg"
+    },
+    {
+      "slug": "call-of-duty-black-ops-6",
+      "name": "Call of Duty: Black Ops 6",
+      "released": "2024-10-25",
+      "rating": 4.2,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox"
+      ],
+      "description": "Una nueva entrega del famoso shooter bélico, esta vez enfocado en operaciones encubiertas durante los años 90. Introduce el innovador sistema de movimiento omnidireccional.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2933620/library_600x900.jpg"
+    },
+    {
+      "slug": "warhammer-40000-space-marine-2",
+      "name": "Warhammer 40,000: Space Marine 2",
+      "released": "2024-09-09",
+      "rating": 4.3,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox"
+      ],
+      "description": "Acción visceral y combates multitudinarios en el oscuro universo de Warhammer. Enfréntate a hordas de Tiránidos demostrando el poder implacable de los Marines Espaciales.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2183900/library_600x900.jpg"
+    },
+    {
+      "slug": "tekken-8",
+      "name": "Tekken 8",
+      "released": "2024-01-26",
+      "rating": 4.6,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox"
+      ],
+      "description": "El torneo del Rey del Puño de Hierro regresa con mecánicas más agresivas gracias al nuevo sistema Heat. Visualmente espectacular y con un sólido modo historia.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1778820/library_600x900.jpg"
+    },
+    {
+      "slug": "dragons-dogma-2",
+      "name": "Dragon's Dogma 2",
+      "released": "2024-03-22",
+      "rating": 4.1,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox"
+      ],
+      "description": "Un RPG de acción que prioriza la reactividad de su mundo y la física en combate. Te permite escalar monstruos gigantes y viajar con la ayuda de peones controlados por IA.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2054970/library_600x900.jpg"
+    }
+  ],
+  "playstation": [
+    {
+      "slug": "bloodborne",
+      "name": "Bloodborne",
+      "released": "2015-03-24",
+      "rating": 4.9,
+      "platforms": [
+        "PlayStation"
+      ],
+      "description": "Una obra maestra de horror gótico y cósmico ambientada en Yharnam. Exige un estilo de combate agresivo y recompensa a los jugadores con una ambientación inigualable.",
+      "cover_url": null
+    },
+    {
+      "slug": "the-last-of-us-part-i",
+      "name": "The Last of Us Part I",
+      "released": "2022-09-02",
+      "rating": 4.8,
+      "platforms": [
+        "PC",
+        "PlayStation"
+      ],
+      "description": "Un remake total que cuenta el desgarrador viaje de Joel y Ellie a través de un Estados Unidos posapocalíptico. Destaca por su guion magistral y tensión narrativa.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1888930/library_600x900.jpg"
+    },
+    {
+      "slug": "god-of-war-ragnarok",
+      "name": "God of War Ragnarök",
+      "released": "2022-11-09",
+      "rating": 4.8,
+      "platforms": [
+        "PC",
+        "PlayStation"
+      ],
+      "description": "Kratos y Atreus enfrentan el fin del mundo nórdico en esta secuela directa. Combina batallas brutales y cinematográficas con un profundo desarrollo emocional de sus personajes.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/library_600x900.jpg"
+    },
+    {
+      "slug": "ghost-of-tsushima",
+      "name": "Ghost of Tsushima",
+      "released": "2020-07-17",
+      "rating": 4.7,
+      "platforms": [
+        "PC",
+        "PlayStation"
+      ],
+      "description": "Un samurái debe abandonar sus códigos de honor para salvar a su isla de la invasión mongola. Su mundo abierto está considerado uno de los más hermosos de la industria.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/library_600x900.jpg"
+    },
+    {
+      "slug": "marvels-spider-man-2",
+      "name": "Marvel's Spider-Man 2",
+      "released": "2023-10-20",
+      "rating": 4.6,
+      "platforms": [
+        "PlayStation"
+      ],
+      "description": "Peter Parker y Miles Morales se unen para enfrentar la amenaza de Venom y Kraven el Cazador. Su sistema de balanceo por Nueva York sigue siendo insuperable.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2651280/library_600x900.jpg"
+    },
+    {
+      "slug": "horizon-forbidden-west",
+      "name": "Horizon Forbidden West",
+      "released": "2022-02-18",
+      "rating": 4.5,
+      "platforms": [
+        "PC",
+        "PlayStation"
+      ],
+      "description": "Aloy viaja al oeste prohibido para investigar una plaga misteriosa que amenaza con acabar con la biósfera. Presenta tribus inéditas y bestias robóticas de diseño soberbio.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2420110/library_600x900.jpg"
+    },
+    {
+      "slug": "returnal",
+      "name": "Returnal",
+      "released": "2021-04-30",
+      "rating": 4.4,
+      "platforms": [
+        "PC",
+        "PlayStation"
+      ],
+      "description": "Un roguelike de disparos en tercera persona donde una astronauta queda atrapada en un bucle temporal alienígena. Su exigente dificultad se equilibra con una fluidez técnica envidiable.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1649240/library_600x900.jpg"
+    },
+    {
+      "slug": "final-fantasy-vii-rebirth",
+      "name": "Final Fantasy VII Rebirth",
+      "released": "2024-02-29",
+      "rating": 4.7,
+      "platforms": [
+        "PlayStation"
+      ],
+      "description": "La segunda parte del ambicioso proyecto de remake de Square Enix. Expande el juego original con un vasto mundo abierto, minijuegos y un refinado sistema de combate.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/2909400/library_600x900.jpg"
+    }
+  ],
+  "xbox": [
+    {
+      "slug": "halo-infinite",
+      "name": "Halo Infinite",
+      "released": "2021-12-08",
+      "rating": 4.1,
+      "platforms": [
+        "PC",
+        "Xbox"
+      ],
+      "description": "El Jefe Maestro regresa en la primera campaña de mundo semi-abierto de la franquicia. Ofrece el clásico y sólido gunplay de la saga junto a un gancho que revoluciona el movimiento.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1240440/library_600x900.jpg"
+    },
+    {
+      "slug": "forza-horizon-5",
+      "name": "Forza Horizon 5",
+      "released": "2021-11-09",
+      "rating": 4.8,
+      "platforms": [
+        "PC",
+        "Xbox"
+      ],
+      "description": "Un espectacular festival automovilístico que toma lugar en una vibrante y recreada versión de México. Su apartado gráfico y opciones de conducción arcade son impecables.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/library_600x900.jpg"
+    },
+    {
+      "slug": "gears-5",
+      "name": "Gears 5",
+      "released": "2019-09-10",
+      "rating": 4.3,
+      "platforms": [
+        "PC",
+        "Xbox"
+      ],
+      "description": "Kait Diaz busca respuestas sobre su conexión con el Enjambre en la entrega más grande de la serie. Evoluciona la fórmula clásica de coberturas con tramos de exploración abierta.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1097840/library_600x900.jpg"
+    },
+    {
+      "slug": "starfield",
+      "name": "Starfield",
+      "released": "2023-09-06",
+      "rating": 4.0,
+      "platforms": [
+        "PC",
+        "Xbox"
+      ],
+      "description": "La primera nueva franquicia de Bethesda en décadas te invita a explorar la galaxia y construir tus propias naves. Un inmenso RPG de ciencia ficción de corte clásico.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1716740/library_600x900.jpg"
+    },
+    {
+      "slug": "sea-of-thieves",
+      "name": "Sea of Thieves",
+      "released": "2018-03-20",
+      "rating": 4.4,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox"
+      ],
+      "description": "Una aventura multijugador donde debes cooperar para navegar, buscar tesoros y sobrevivir a encuentros con otros piratas. Destaca por su agua fotorrealista y tono desenfadado.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1172620/library_600x900.jpg"
+    },
+    {
+      "slug": "senuas-saga-hellblade-ii",
+      "name": "Senua's Saga: Hellblade II",
+      "released": "2024-05-21",
+      "rating": 4.2,
+      "platforms": [
+        "PC",
+        "Xbox"
+      ],
+      "description": "Un portento visual de Unreal Engine 5 que continúa el viaje psicológico y mitológico de Senua. Prioriza una narrativa íntima y perturbadora sobre mecánicas complejas.",
+      "cover_url": null
+    },
+    {
+      "slug": "ori-and-the-will-of-the-wisps",
+      "name": "Ori and the Will of the Wisps",
+      "released": "2020-03-11",
+      "rating": 4.8,
+      "platforms": [
+        "PC",
+        "Xbox",
+        "Nintendo"
+      ],
+      "description": "Un deslumbrante plataformas de acción con mecánicas metroidvania mejoradas respecto a su predecesor. Su fluidez de movimiento, combate y banda sonora son excepcionales.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1057090/library_600x900.jpg"
+    },
+    {
+      "slug": "hi-fi-rush",
+      "name": "Hi-Fi Rush",
+      "released": "2023-01-25",
+      "rating": 4.7,
+      "platforms": [
+        "PC",
+        "PlayStation",
+        "Xbox"
+      ],
+      "description": "Un carismático juego de acción rítmica donde los ataques, el entorno y la música se sincronizan. Una sorpresa colorida y llena de humor que rompe los moldes tradicionales.",
+      "cover_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/1817230/library_600x900.jpg"
+    }
+  ],
+  "nintendo": [
+    {
+      "slug": "the-legend-of-zelda-tears-of-the-kingdom",
+      "name": "The Legend of Zelda: Tears of the Kingdom",
+      "released": "2023-05-12",
+      "rating": 4.9,
+      "platforms": [
+        "Nintendo"
+      ],
+      "description": "Expande el horizonte de Hyrule hacia los cielos y las profundidades, añadiendo un revolucionario sistema de construcción. Demuestra un diseño de físicas que empodera la creatividad del jugador.",
+      "cover_url": null
+    },
+    {
+      "slug": "super-mario-odyssey",
+      "name": "Super Mario Odyssey",
+      "released": "2017-10-27",
+      "rating": 4.8,
+      "platforms": [
+        "Nintendo"
+      ],
+      "description": "Mario recorre diversos reinos en una nave con forma de sombrero gracias a la ayuda de Cappy. Un título de plataformas 3D inagotable en mecánicas y pura diversión.",
+      "cover_url": null
+    },
+    {
+      "slug": "animal-crossing-new-horizons",
+      "name": "Animal Crossing: New Horizons",
+      "released": "2020-03-20",
+      "rating": 4.6,
+      "platforms": [
+        "Nintendo"
+      ],
+      "description": "Te invita a colonizar y diseñar una isla desierta a tu propio ritmo. Se convirtió en un fenómeno social mundial por ser un refugio virtual pacífico y amigable.",
+      "cover_url": null
+    },
+    {
+      "slug": "super-smash-bros-ultimate",
+      "name": "Super Smash Bros. Ultimate",
+      "released": "2018-12-07",
+      "rating": 4.7,
+      "platforms": [
+        "Nintendo"
+      ],
+      "description": "El crossover de peleas definitivo que reúne a icónicos personajes de toda la historia de los videojuegos. Su nivel de contenido y pulido lo hacen insuperable en su género.",
+      "cover_url": null
+    },
+    {
+      "slug": "mario-kart-8-deluxe",
+      "name": "Mario Kart 8 Deluxe",
+      "released": "2017-04-28",
+      "rating": 4.8,
+      "platforms": [
+        "Nintendo"
+      ],
+      "description": "La versión definitiva del aclamado juego de carreras antigravedad. Su accesibilidad, pistas ingeniosas y modos multijugador lo mantienen como un éxito de ventas constante.",
+      "cover_url": null
+    },
+    {
+      "slug": "metroid-dread",
+      "name": "Metroid Dread",
+      "released": "2021-10-08",
+      "rating": 4.5,
+      "platforms": [
+        "Nintendo"
+      ],
+      "description": "Samus Aran retorna a sus raíces 2D enfrentando la implacable persecución de los robots EMMI. Su control es ágil, satisfactorio y perfecto para los amantes de los laberintos alienígenas.",
+      "cover_url": null
+    },
+    {
+      "slug": "splatoon-3",
+      "name": "Splatoon 3",
+      "released": "2022-09-09",
+      "rating": 4.4,
+      "platforms": [
+        "Nintendo"
+      ],
+      "description": "El peculiar shooter de Nintendo donde pintar el territorio es tan importante como eliminar rivales. Refina la fórmula con nuevas armas, opciones de personalización y una robusta campaña.",
+      "cover_url": null
+    },
+    {
+      "slug": "pikmin-4",
+      "name": "Pikmin 4",
+      "released": "2023-07-21",
+      "rating": 4.5,
+      "platforms": [
+        "Nintendo"
+      ],
+      "description": "Una encantadora aventura de estrategia en tiempo real donde lideras pequeñas criaturas vegetales. Introduce elementos novedosos como la exploración nocturna y la ayuda del perro espacial Oatchi.",
+      "cover_url": null
+    }
+  ]
+}

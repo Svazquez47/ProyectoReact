@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { supabase } from '../services/supabaseClient';
 import { fetchGameDetails } from '../services/rawgApi';
 import { useAuth } from '../context/AuthContext';
-import '../styles/profile.css';
+import '../styles/profile.scss';
 
 const MAX_FEATURED = 4;
 
@@ -24,14 +24,12 @@ function Profile() {
     document.title = `${username} — GameVault`;
   }, [username]);
 
-  // Cargar juegos de la Vault y reseñas del usuario
   useEffect(() => {
     if (!user || !supabase) return;
 
     let isMounted = true;
 
     async function loadProfileData() {
-      // 1. Cargar Vault del usuario
       const { data: vaultData, error: vaultErr } = await supabase
         .from('vault_games')
         .select('*')
@@ -44,7 +42,6 @@ function Profile() {
       if (vaultErr) console.error('Error cargando la Vault:', vaultErr);
       setVaultGames(gamesList);
 
-      // 2. Cargar reseñas del usuario
       const { data: reviewsData, error: revErr } = await supabase
         .from('game_reviews')
         .select('*')
@@ -62,7 +59,6 @@ function Profile() {
       const reviewsList = reviewsData || [];
       setMyReviews(reviewsList);
 
-      // 3. Armar diccionario de nombres de juegos (usando la Vault primero y consultando RAWG si falta alguno)
       const nameMap = {};
       gamesList.forEach((g) => {
         nameMap[g.game_id] = g.game_name;
@@ -96,7 +92,6 @@ function Profile() {
     };
   }, [user]);
 
-  // Destacar o quitar destacado de un juego (máximo 4)
   const handleToggleFeatured = async (game) => {
     const makeFeatured = !game.featured;
     const currentFeaturedCount = vaultGames.filter((g) => g.featured).length;
@@ -120,7 +115,6 @@ function Profile() {
       return;
     }
 
-    // Actualizamos el estado local y React redibuja automáticamente el expositor y el selector
     setVaultGames((prev) =>
       prev.map((g) =>
         g.game_id === game.game_id ? { ...g, featured: makeFeatured } : g

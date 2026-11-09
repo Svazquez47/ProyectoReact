@@ -1,0 +1,152 @@
+// ==========================================================
+// login.scss — pantalla de Login / registro / recuperar clave
+// (.field, .btn-primary y .btn-secondary están en base.scss)
+// ==========================================================
+@use 'variables';
+@use 'mixins';
+
+// Usamos .login-page en lugar de body para no afectar al resto de la SPA
+.login-page {
+  @include mixins.flex-center;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: variables.$color-bg;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    background:
+      linear-gradient(120deg, rgba(35, 10, 55, 0.55) 0%, rgba(70, 15, 60, 0.45) 45%, rgba(25, 8, 45, 0.9) 100%),
+      linear-gradient(100deg, #d92b6e 0%, #9a2f8f 35%, #5a2199 70%, #2b1245 100%);
+    filter: blur(2px);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    pointer-events: none;
+    background-image: variables.$noise-login;
+    background-repeat: repeat;
+    mix-blend-mode: overlay;
+    opacity: var(--noise-opacity, 0.75);
+  }
+}
+
+.login-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 380px;
+  background: rgba(45, 18, 66, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: variables.$radius-lg;
+  padding: 40px 32px 32px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+
+  a.brand-mark {
+    display: inline-block;
+  }
+
+  img.brand-mark {
+    width: 92px;
+    height: auto;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 26px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+  }
+}
+
+.options-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px 2px 4px;
+  font-size: 12px;
+
+  a {
+    color: variables.$color-pink-hover;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: variables.$text-muted;
+
+  input {
+    accent-color: variables.$color-pink;
+  }
+}
+
+.signup-hint {
+  margin-top: 18px;
+  font-size: 12px;
+  color: variables.$text-muted;
+
+  a {
+    color: variables.$text-white;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// ---------- Mensajes del formulario ----------
+.form-message {
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 7px;
+
+  &--error {
+    background: rgba(variables.$color-pink, 0.18);
+    border: 1px solid rgba(variables.$color-pink, 0.5);
+    color: #ffd3de;
+  }
+
+  &--success {
+    background: rgba(70, 200, 130, 0.16);
+    border: 1px solid rgba(70, 200, 130, 0.5);
+    color: #c9f5dc;
+  }
+
+  &--warning {
+    background: rgba(variables.$color-star, 0.14);
+    border: 1px solid rgba(variables.$color-star, 0.5);
+    color: #ffe3b3;
+  }
+}

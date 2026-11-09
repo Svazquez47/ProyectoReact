@@ -3,7 +3,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../services/supabaseClient';
 import { fetchGameDetails, fetchGameRawgReviews } from '../services/rawgApi';
 import { useAuth } from '../context/AuthContext';
-import '../styles/review.css';
+import '../styles/review.scss';
 
 function Review() {
   const [searchParams] = useSearchParams();
@@ -25,7 +25,6 @@ function Review() {
   const [reviewComment, setReviewComment] = useState('');
   const [submittingReview, setSubmittingReview] = useState(false);
 
-  // Función para cargar y combinar reseñas de Supabase + RAWG (igual que loadGameReviews en review.js)
   const loadReviews = useCallback(async (id) => {
     let dbReviews = [];
     if (supabase) {
@@ -63,7 +62,6 @@ function Review() {
     setReviews(combined);
   }, []);
 
-  // Cargar datos del juego y reseñas cuando cambia el gameId
   useEffect(() => {
     if (!gameId || Number.isNaN(gameId)) return;
 
@@ -88,7 +86,6 @@ function Review() {
     }
 
     fetchAll();
-    // Solucionar error en loadReviewed !!
     loadReviews(gameId);
 
     return () => {
@@ -119,7 +116,6 @@ function Review() {
     };
   }, [user, gameId]);
 
-  // Manejar el botón Add to Vault / Remove from Vault
   const handleVaultAction = async () => {
     if (!user) {
       window.alert('Debes iniciar sesión para guardar juegos.');
@@ -163,7 +159,6 @@ function Review() {
     setVaultLoading(false);
   };
 
-  // Manejar el envío de una nueva reseña
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
 
@@ -213,7 +208,6 @@ function Review() {
     }
   };
 
-  // Cálculos de estrellas y barras de porcentaje (igual que en tu review.js)
   const starCount = game ? Math.min(5, Math.max(0, Math.round(game.rating || 0))) : 5;
   const starsString = '★'.repeat(starCount) + '☆'.repeat(5 - starCount);
 
@@ -230,7 +224,6 @@ function Review() {
       }
     : {};
 
-  // Estado si no se pasó un ?id= válido en la URL
   if (!gameId || Number.isNaN(gameId)) {
     return (
       <div className="review-page">

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../services/supabaseClient';
 import { useAuth } from '../context/AuthContext';
-import '../styles/vault.css';
+import '../styles/vault.scss';
 
 function Vault() {
   const { user } = useAuth();
@@ -43,7 +43,6 @@ function Vault() {
   }, [user]);
 
   const handleRemoveGame = async (e, game) => {
-    // Evita que al hacer clic en eliminar se navegue a la página de review
     e.stopPropagation();
 
     const confirmed = window.confirm(
@@ -58,7 +57,6 @@ function Vault() {
       .eq('game_id', game.game_id);
 
     if (!deleteError) {
-      // Actualizamos el estado quitando el juego eliminado sin recargar la página
       setGames((prevGames) => prevGames.filter((g) => g.game_id !== game.game_id));
     } else {
       console.error('Error al eliminar:', deleteError);

@@ -1,32 +1,42 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { fetchGamesByCategory, getRecentDatesRange } from '../services/rawgApi';
+import { fetchGamesByCategory, getRecentDatesRange, USE_MOCK } from '../services/rawgApi';
+import { MOCK_BY_CATEGORY } from '../data/gamesMock';
 import SearchBox from '../components/SearchBox';
-import '../styles/homepage.css';
+import '../styles/homepage.scss';
 
-// Subcomponente reutilizable para cada fila de categoría (reemplaza a loadGameCategory de api.js)
-function CategoryRow({ title, bgClass, endpointParams }) {
-  const [games, setGames] = useState([]);
-  const [error, setError] = useState(false);
+function CategoryRow({ title, bgClass, endpointParams, mockKey }) {
+  const [games, setGames] = useState(USE_MOCK ? MOCK_BY_CATEGORY[mockKey] : []);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (USE_MOCK) return;
+
     let isMounted = true;
 
     fetchGamesByCategory(endpointParams)
       .then((results) => {
-        if (isMounted) setGames(results);
+        if (isMounted) {
+          if (results && results.length > 0) {
+            setGames(results);
+          } else {
+            setGames(MOCK_BY_CATEGORY[mockKey]);
+          }
+        }
       })
       .catch((err) => {
-        console.error(`Error cargando la categoría ${title}:`, err);
-        if (isMounted) setError(true);
+        console.warn(`Error cargando la categoría "${title}". Usando datos MOCK de respaldo:`, err);
+        if (isMounted) {
+          setGames(MOCK_BY_CATEGORY[mockKey]);
+        }
       });
 
     return () => {
       isMounted = false;
     };
-  }, [endpointParams, title]);
+  }, [endpointParams, title, mockKey]);
 
   return (
     <section className={`game-category ${bgClass}`}>
@@ -36,9 +46,9 @@ function CategoryRow({ title, bgClass, endpointParams }) {
       </div>
 
       <div className="card-grid">
-        {error ? (
+        {games.length === 0 && error ? (
           <p style={{ padding: '20px', color: 'var(--text-muted)' }}>
-            No se pudo cargar el catálogo.
+            No se pudo cargar el catálogo. {error}
           </p>
         ) : (
           games.map((game) => {
@@ -93,30 +103,34 @@ function CategoryRow({ title, bgClass, endpointParams }) {
 function Homepage() {
   const { session } = useAuth();
 
-  // Definimos las 5 categorías en un arreglo limpio
   const categories = [
     {
       title: 'Trending Games',
+      mockKey: 'trending',
       bgClass: 'bg-trending',
       endpointParams: 'ordering=-added',
     },
     {
       title: 'New Releases',
+      mockKey: 'new',
       bgClass: 'bg-new',
       endpointParams: `dates=${getRecentDatesRange()}&ordering=-released`,
     },
     {
       title: 'PlayStation Exclusives',
+      mockKey: 'playstation',
       bgClass: 'bg-playstation',
       endpointParams: 'publishers=sony-computer-entertainment,playstation-studios&ordering=-added',
     },
     {
       title: 'Xbox Exclusives',
+      mockKey: 'xbox',
       bgClass: 'bg-xbox',
       endpointParams: 'publishers=microsoft-studios,xbox-game-studios&ordering=-added',
     },
     {
       title: 'Nintendo Exclusives',
+      mockKey: 'nintendo',
       bgClass: 'bg-nintendo',
       endpointParams: 'publishers=nintendo&ordering=-added',
     },
@@ -146,13 +160,13 @@ function Homepage() {
         </div>
       </section>
 
-      {/* Renderizamos las 5 secciones dinámicamente */}
       {categories.map((cat) => (
         <CategoryRow
           key={cat.title}
           title={cat.title}
           bgClass={cat.bgClass}
           endpointParams={cat.endpointParams}
+          mockKey={cat.mockKey}
         />
       ))}
     </>

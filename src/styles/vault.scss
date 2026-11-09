@@ -1,9 +1,15 @@
+// ==========================================================
+// vault.scss — pantalla "My Vault"
+// ==========================================================
+@use 'variables';
+@use 'mixins';
+
 .vault-page {
   min-height: calc(100vh - 84px);
-  background-color: var(--color-bg);
+  background-color: variables.$color-bg;
   background-image:
     linear-gradient(180deg, rgba(180, 42, 110, 0.9) 0%, rgba(31, 13, 51, 0) 18%, rgba(31, 13, 51, 0) 82%, rgba(90, 31, 150, 0.9) 100%),
-    var(--hero-image-default);
+    variables.$hero-pattern;
   background-repeat: repeat;
   background-position: center;
   background-attachment: fixed;
@@ -25,74 +31,70 @@
   font-weight: 700;
 }
 
-.vault-item .title-label {
-  font-size: 15px;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .vault-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 32px 24px;
-}
 
-.vault-item .cover {
-  aspect-ratio: 3 / 4;
-  background: var(--color-cover);
-  border-radius: 4px;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-@media (max-width: 900px) {
-  .vault-grid {
+  @media (max-width: variables.$bp-tablet) {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 .remove-bar {
+  @include mixins.flex-center;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 40px;
-  background-color: var(--color-pink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: variables.$color-pink;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.2s ease, transform 0.2s ease;
   z-index: 2;
 }
 
-.vault-item .cover:hover .remove-bar {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .remove-btn {
+  @include mixins.flex-center;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.6);
   color: #fff;
   border-radius: 50%;
   width: 22px;
   height: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   font-size: 12px;
   line-height: 1;
   padding: 0;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+  }
 }
 
-.remove-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: #fff;
+.vault-item {
+  .title-label {
+    font-size: 15px;
+    color: variables.$text-muted;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cover {
+    aspect-ratio: 3 / 4;
+    background: variables.$color-cover;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover .remove-bar {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

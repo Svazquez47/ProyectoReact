@@ -1,0 +1,183 @@
+// ==========================================================
+// homepage.scss — portada y carruseles de juegos
+// ==========================================================
+@use 'variables';
+@use 'mixins';
+
+// ---------- Portada (hero) ----------
+.hero-backdrop.hero-photo {
+  --hero-image: url('../assets/Ps_games_image.jpeg');
+  --noise-opacity: 0.6;
+  background-image:
+    linear-gradient(100deg, rgba(217, 43, 110, 0.4) 0%, rgba(154, 47, 143, 0.35) 35%, rgba(90, 33, 153, 0.45) 70%, rgba(43, 18, 69, 0.7) 100%),
+    linear-gradient(to bottom, rgba(31, 13, 51, 0.1), rgba(31, 13, 51, 0.5)),
+    var(--hero-image);
+  background-blend-mode: normal;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &::after {
+    background-image: variables.$noise-hero;
+  }
+}
+
+.hero-photo .hero-text {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+section.hero.noise {
+  overflow: visible;
+  z-index: 100;
+}
+
+.hero {
+  padding: 130px var(--space-page-x) 40px;
+}
+
+.hero-content {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+
+  .search-box {
+    width: 400px;
+    max-width: 100%;
+  }
+
+  @media (max-width: variables.$bp-tablet) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.hero-text {
+  .logo {
+    font-size: 78px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1;
+
+    @media (max-width: variables.$bp-mobile) {
+      font-size: 44px;
+    }
+  }
+
+  .tagline {
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: 400;
+    opacity: 0.95;
+  }
+}
+
+.cta-row {
+  margin-top: 18px;
+}
+
+// ---------- Secciones por categoría ----------
+.game-category {
+  margin: 0;
+  padding: 60px var(--space-page-x);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0;
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 15px;
+
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+    color: variables.$text-white;
+  }
+
+  a {
+    color: variables.$text-muted;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: variables.$text-white;
+    }
+  }
+}
+
+// ---------- Carrusel horizontal de tarjetas ----------
+.card-grid {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #555555 transparent;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #444;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: #666;
+    }
+  }
+
+  .game-cover {
+    flex: 0 0 calc(20% - 16px);
+    min-width: 220px;
+    height: 320px;
+    border: none;
+    border-radius: variables.$radius-md;
+    background-color: variables.$color-surface;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    scroll-snap-align: start;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+    }
+  }
+}
+
+// ---------- Fondo de cada categoría (usa el mixin category-bg) ----------
+.bg-trending {
+  @include mixins.category-bg(rgba(43, 18, 69, 0.85), url('../assets/fondo-morado-abstracto_698452-2012.avif'));
+}
+
+.bg-new {
+  @include mixins.category-bg(rgba(35, 20, 45, 0.85), url('../assets/Pc_games_image.jpeg'));
+}
+
+.bg-playstation {
+  @include mixins.category-bg(rgba(0, 35, 90, 0.8), url('../assets/Ps_games_image.jpeg'));
+}
+
+.bg-xbox {
+  @include mixins.category-bg(rgba(12, 70, 15, 0.8), url('../assets/xbox_games_image.jpeg'));
+}
+
+.bg-nintendo {
+  @include mixins.category-bg(rgba(110, 10, 15, 0.8), url('../assets/Nintendo_games_image.jpeg'));
+}

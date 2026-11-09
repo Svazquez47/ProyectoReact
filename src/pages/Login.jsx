@@ -9,7 +9,7 @@ import {
   SUPABASE_ANON_KEY,
 } from '../services/supabaseClient';
 import { useAuth } from '../context/AuthContext';
-import '../styles/login.css';
+import '../styles/login.scss';
 
 const MIN_PASSWORD = 8;
 
@@ -79,12 +79,10 @@ function Login() {
   const [searchParams] = useSearchParams();
   const { session } = useAuth();
 
-  // Inicializamos el modo verificando si el usuario viene de un enlace de recuperación
   const [mode, setMode] = useState(() => {
     return window.location.hash.includes('type=recovery') ? 'reset' : 'login';
   });
 
-  // Inicializamos el mensaje verificando problemas de configuración o enlaces expirados
   const [message, setMessage] = useState(() => {
     const problem = getSetupProblem();
     if (problem) return { text: problem, type: 'error' };
@@ -104,7 +102,6 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const [projectSettings, setProjectSettings] = useState(null);
 
-  // Redirección segura después de autenticarse (adaptado a rutas de React Router)
   const redirectAfterAuth = useCallback(() => {
     const nextParam = searchParams.get('next');
     const safeNext =
@@ -114,14 +111,12 @@ function Login() {
     navigate(safeNext, { replace: true });
   }, [navigate, searchParams]);
 
-  // Si ya hay sesión activa (y no estamos cambiando contraseña), redirigir
   useEffect(() => {
     if (session && mode !== 'reset') {
       redirectAfterAuth();
     }
   }, [session, mode, redirectAfterAuth]);
 
-  // Verificar eventos de recuperación de contraseña y conexión inicial con Supabase
   useEffect(() => {
     if (window.location.hash.includes('error_code=')) {
       window.history.replaceState(null, '', window.location.pathname + window.location.search);
@@ -279,7 +274,6 @@ function Login() {
   };
 
   const cfg = MODES[mode];
-  // Condiciones de visibilidad equivalentes a tus atributos data-modes
   const showEmail = ['login', 'register', 'forgot'].includes(mode);
   const showPassword = ['login', 'register', 'reset'].includes(mode);
   const showConfirm = ['register', 'reset'].includes(mode);

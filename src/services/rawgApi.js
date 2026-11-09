@@ -1,5 +1,10 @@
-const API_KEY = 'a3ce13daa9974764926de77336692c0b';
+import { MOCK_BY_CATEGORY, getMockGameById, isMockId, searchMockGames } from '../data/gamesMock';
+
+const API_KEY = import.meta.env.VITE_RAWG_API_KEY;
+export const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
 const BASE_URL = 'https://api.rawg.io/api/games';
+
+const cache = {};
 
 export function getRecentDatesRange() {
   const today = new Date();
@@ -9,43 +14,103 @@ export function getRecentDatesRange() {
   return `${format(pastDate)},${format(today)}`;
 }
 
-export async function fetchGamesByCategory(endpointParams) {
-  const url = `${BASE_URL}?key=${API_KEY}&page_size=15&${endpointParams}`;
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Error en la petición: ${response.status}`);
+
+function describeStatus(status) {
+  if (status === 401 || status === 403) {
+    return `RAWG rechazó la clave (error ${status}). Revisá VITE_RAWG_API_KEY en el .env.`;
   }
-  const data = await response.json();
-  return data.results || [];
+  if (status === 429) {
+    return 'Se superó el límite de pedidos de RAWG (error 429). Probá más tarde o creá otra clave.';
+  }
+  return `RAWG respondió con el error ${status}.`;
+}
+
+async function request(url) {
+  if (!API_KEY) {
+    throw new Error('Falta la clave de RAWG: creá el archivo .env con VITE_RAWG_API_KEY.');
+  }
+
+  let response;
+  try {
+    response = await fetch(url);
+  } catch {
+    throw new Error('No se pudo conectar con RAWG. Revisá tu conexión a internet.');
+  }
+
+  if (!response.ok) {
+    throw new Error(describeStatus(response.status));
+  }
+  return response.json();
+}
+
+function getJson(url) {
+  if (!cache[url]) {
+    cache[url] = request(url).catch((err) => {
+      delete cache[url];
+      throw err;
+    });
+  }
+  return cache[url];
+}
+
+function mockCategoryFromParams(endpointParams) {
+  if (endpointParams.includes('sony') || endpointParams.includes('playstation')) return 'playstation';
+  if (endpointParams.includes('microsoft') || endpointParams.includes('xbox')) return 'xbox';
+  if (endpointParams.includes('nintendo')) return 'nintendo';
+  if (endpointParams.includes('dates=')) return 'new';
+  return 'trending';
+}
+
+export async function fetchGamesByCategory(endpointParams) {
+  const mockGames = MOCK_BY_CATEGORY[mockCategoryFromParams(endpointParams)];
+  if (USE_MOCK) return mockGames;
+
+  try {
+    const data = await getJson(`${BASE_URL}?key=${API_KEY}&page_size=15&${endpointParams}`);
+    return data.results && data.results.length > 0 ? data.results : mockGames;
+  } catch (err) {
+    // Si RAWG no responde, devolvemos las tarjetas de mock de esa categoría
+    console.warn('RAWG no responde, usando datos MOCK:', err);
+    return mockGames;
+  }
 }
 
 export async function searchGames(query) {
-  const url = `${BASE_URL}?search=${encodeURIComponent(query)}&key=${API_KEY}&page_size=5`;
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error('Error en la petición a RAWG');
+  if (USE_MOCK) return searchMockGames(query);
+
+  try {
+    const data = await getJson(
+      `${BASE_URL}?search=${encodeURIComponent(query)}&key=${API_KEY}&page_size=5`
+    );
+    return data.results || [];
+  } catch (err) {
+    // Si RAWG no responde, buscamos entre los juegos de mock
+    console.warn('RAWG no responde, buscando en datos MOCK:', err);
+    return searchMockGames(query);
   }
-  const data = await response.json();
-  return data.results || [];
 }
 
-// NUEVO: Obtener los detalles completos de un juego por su ID (usado en Review y Profile)
+
 export async function fetchGameDetails(gameId) {
-  const url = `${BASE_URL}/${gameId}?key=${API_KEY}`;
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error('Error al obtener los datos del juego');
+  // Los juegos de mock no existen en RAWG: se leen del archivo local
+  if (USE_MOCK || isMockId(gameId)) {
+    const mockGame = getMockGameById(gameId);
+    if (mockGame) return mockGame;
+    throw new Error('Juego de mock no encontrado.');
   }
-  return await response.json();
+  return getJson(`${BASE_URL}/${gameId}?key=${API_KEY}`);
 }
 
-// NUEVO: Obtener y filtrar reseñas de RAWG (con tu filtro anti-spam de review.js)
 export async function fetchGameRawgReviews(gameId) {
-  const url = `${BASE_URL}/${gameId}/reviews?key=${API_KEY}`;
-  const response = await fetch(url);
-  if (!response.ok) return [];
+  if (USE_MOCK || isMockId(gameId)) return [];
 
-  const json = await response.json();
+  let json;
+  try {
+    json = await getJson(`${BASE_URL}/${gameId}/reviews?key=${API_KEY}`);
+  } catch {
+    return [];
+  }
+
   const spam = [
     'casino', 'bet', '1xbet', 'slot', 'promo', 'bonus',
     'free spins', 'gamble', 'crypto', 'binance', 'invest', 'http', 'www.',
